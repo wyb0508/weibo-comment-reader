@@ -1,0 +1,6 @@
+node_modules/
+weibo-runs/
+.weibo-comment-reader/
+.env
+.env.*
+.DS_Store

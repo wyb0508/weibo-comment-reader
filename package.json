@@ -1,0 +1,9 @@
+{
+  "name": "weibo-comment-reader",
+  "version": "1.0.0",
+  "private": true,
+  "description": "微博网页评论读取、意图筛选与原页截图",
+  "engines": { "node": ">=22" },
+  "scripts": { "test": "node --test test/*.test.js" },
+  "dependencies": { "playwright-core": "1.62.1" }
+}

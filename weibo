@@ -1,0 +1,16 @@
+#!/bin/sh
+set -eu
+agent_dir=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
+node_bin=$(command -v node || true)
+buddy="$HOME/.workbuddy/binaries/node"
+if [ -z "$node_bin" ]; then
+  for candidate in "$buddy"/versions/*/bin/node; do
+    if [ -x "$candidate" ]; then node_bin="$candidate"; fi
+  done
+fi
+if [ -z "$node_bin" ]; then echo '需要 Node.js 22 或更高版本。' >&2; exit 1; fi
+if [ -d "$buddy/workspace/node_modules/playwright-core" ]; then
+  export NODE_PATH="$buddy/workspace/node_modules${NODE_PATH:+:$NODE_PATH}"
+fi
+exec "$node_bin" "$agent_dir/cli.js" "$@"
+
